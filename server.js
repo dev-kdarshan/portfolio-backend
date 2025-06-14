@@ -4,7 +4,7 @@ const { MongoClient } = require("mongodb");
 const cors = require("cors");
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
@@ -38,7 +38,7 @@ app.post("/submit", async (req, res) => {
   }
 });
 
-// 🧪 (Optional) GET route to see submissions
+// GET route to see submissions
 app.get("/submissions", async (req, res) => {
   try {
     const data = await formResponsesCollection.find().toArray();
